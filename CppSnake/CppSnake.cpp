@@ -8,8 +8,6 @@
 
 int main()
 {
-	std::cout << "Hello, World" << std::endl;
-
 	Console* console = Console::get_instance();
 	if (!console || !console->test_console())
 	{

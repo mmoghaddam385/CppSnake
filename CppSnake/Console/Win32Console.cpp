@@ -1,4 +1,4 @@
-#include "console.h"
+#include "Console.h"
 
 #include <iostream>
 #include <Windows.h>

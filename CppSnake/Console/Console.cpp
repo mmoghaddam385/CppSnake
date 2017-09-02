@@ -1,4 +1,4 @@
-#include "console.h"
+#include "Console.h"
 #include <iostream>
 
 // be sure that defined WIN32 means windows
