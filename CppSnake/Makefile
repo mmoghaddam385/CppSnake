@@ -3,9 +3,10 @@ CARGS=-std=c++11
 EXE=Release/snake.exe
 MAIN=CppSnake.cpp
 CONSOLE=Console/Console.cpp Console/Win32Console.cpp
+GAME=Game/SnakeGame.cpp
 
 build:
-	$(COMPILER) $(CARGS) $(MAIN) $(CONSOLE) -o $(EXE)
+	$(COMPILER) $(CARGS) $(MAIN) $(CONSOLE) $(GAME) -o $(EXE)
 	
 run:
 	./$(EXE)

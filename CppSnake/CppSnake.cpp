@@ -3,6 +3,7 @@
 
 #include "stdafx.h"
 #include "Console/console.h"
+#include "Game/SnakeGame.h"
 #include <iostream>
 #include <Windows.h>
 
@@ -16,6 +17,11 @@ int main()
 
 	console->reset_screen();
 
+	std::cout << console->read_char();
+
+	SnakeGame game = SnakeGame(console);
+	game.start();
+		
 	system("pause");
     return 0;
 }

@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <Windows.h>
+#include <conio.h>
 
 // get the screen size of the console
 COORD get_screen_size();
@@ -43,6 +44,11 @@ void Win32Console::reset_screen()
 		std::cout << std::endl;
 	}
 
+}
+
+int Win32Console::read_char()
+{
+	return _getch();
 }
 
 COORD get_screen_size()
