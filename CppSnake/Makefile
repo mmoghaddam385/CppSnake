@@ -7,6 +7,7 @@ GAME=Game/SnakeGame.cpp
 MENU=UI/Menu.cpp UI/MenuButton.cpp
 
 build:
+	@mkdir -p ./Release/
 	$(COMPILER) $(CARGS) $(MAIN) $(CONSOLE) $(GAME) $(MENU) -o $(EXE)
 	
 run:

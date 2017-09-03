@@ -1,7 +1,6 @@
 // CppSnake.cpp : Defines the entry point for the console application.
 //
 
-#include "stdafx.h"
 #include "Console/console.h"
 #include "Game/SnakeGame.h"
 #include <iostream>
