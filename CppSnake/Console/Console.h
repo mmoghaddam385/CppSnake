@@ -3,6 +3,9 @@
 #define MIN_CONSOLE_HEIGHT 30
 #define MIN_CONSOLE_WIDTH 80
 
+#define TOP_ROW "--------------------------------------------------------------------------------"
+#define MID_ROW "|                                                                              |"
+
 class Console
 {
 	public:

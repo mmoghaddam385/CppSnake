@@ -32,22 +32,20 @@ void Win32Console::reset_screen()
 	system("cls");
 	this->gotoxy(0, 0);
 
-	for (int y = 0; y < MIN_CONSOLE_HEIGHT; y++)
-	{
-		for (int x = 0; x < MIN_CONSOLE_WIDTH; x++)
-		{
-			if (y == 0 || y == MIN_CONSOLE_HEIGHT - 1) std::cout << "-";
-			else if (x == 0 || x == MIN_CONSOLE_WIDTH - 1) std::cout << "|";
-			else std::cout << " ";
-		}
+	std::cout << TOP_ROW << std::endl;
 
-		std::cout << std::endl;
+	for (int y = 1; y < MIN_CONSOLE_HEIGHT - 1; y++)
+	{
+		std::cout << MID_ROW << std::endl;
 	}
+
+	std::cout << TOP_ROW << std::endl;
 
 }
 
 int Win32Console::read_char()
 {
+	// todo: arrow keys return 0 or 0xE0 first?
 	return _getch();
 }
 
