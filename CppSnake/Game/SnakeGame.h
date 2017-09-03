@@ -2,15 +2,17 @@
 
 #include "../Console/console.h"
 
+#include <memory>
+
 class SnakeGame
 {
 	public:
-		SnakeGame(Console* console) : m_console(console) { }
+		SnakeGame(std::shared_ptr<Console> console) : m_console(console) { }
 
 		void start();
 
 	private:
-		Console* m_console;
+		std::shared_ptr<Console> m_console;
 
 		void menu();
 };

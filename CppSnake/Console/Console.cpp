@@ -6,11 +6,10 @@
 #define WIN32
 #endif
 
-Console* Console::get_instance()
+std::shared_ptr<Console> Console::get_instance()
 {
 #ifdef WIN32
-	static Win32Console instance = Win32Console();
-	return &instance;
+	return std::shared_ptr<Console>(new Win32Console());
 #else
 	std::cout << "Platform not supported :(" << std::endl;
 	return NULL;

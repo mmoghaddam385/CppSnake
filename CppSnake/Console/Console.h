@@ -1,5 +1,7 @@
 #pragma once
 
+#include <memory>
+
 #define MIN_CONSOLE_HEIGHT 30
 #define MIN_CONSOLE_WIDTH 80
 
@@ -9,7 +11,7 @@
 class Console
 {
 	public:
-		static Console* get_instance(); // get a system dependant implementation of the console class
+		static std::shared_ptr<Console> get_instance(); // get a system dependant implementation of the console class
 
 		virtual bool test_console() = 0; // check if the console is valid to run in
 

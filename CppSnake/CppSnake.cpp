@@ -9,15 +9,13 @@
 
 int main()
 {
-	Console* console = Console::get_instance();
+	auto console = Console::get_instance();
 	if (!console || !console->test_console())
 	{
 		return 1;
 	}
 
 	console->reset_screen();
-
-	std::cout << console->read_char();
 
 	SnakeGame game = SnakeGame(console);
 	game.start();

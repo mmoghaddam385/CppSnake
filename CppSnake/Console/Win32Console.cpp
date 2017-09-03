@@ -45,8 +45,15 @@ void Win32Console::reset_screen()
 
 int Win32Console::read_char()
 {
-	// todo: arrow keys return 0 or 0xE0 first?
-	return _getch();
+	int ch = _getch();
+	
+	// if the first ch is 0 or 0xE0, it's an arrow get and we need to call _getch() again for that actual value
+	if (ch == 0 || ch == 0xE0)
+	{
+		return _getch();
+	}
+
+	return ch;
 }
 
 COORD get_screen_size()

@@ -1,12 +1,13 @@
 COMPILER=g++
-CARGS=-std=c++11
+CARGS=-std=c++14
 EXE=Release/snake.exe
 MAIN=CppSnake.cpp
 CONSOLE=Console/Console.cpp Console/Win32Console.cpp
 GAME=Game/SnakeGame.cpp
+MENU=UI/Menu.cpp UI/MenuButton.cpp
 
 build:
-	$(COMPILER) $(CARGS) $(MAIN) $(CONSOLE) $(GAME) -o $(EXE)
+	$(COMPILER) $(CARGS) $(MAIN) $(CONSOLE) $(GAME) $(MENU) -o $(EXE)
 	
 run:
 	./$(EXE)
