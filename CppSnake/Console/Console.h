@@ -13,9 +13,11 @@ class Console
 	public:
 		static std::shared_ptr<Console> get_instance(); // get a system dependant implementation of the console class
 
+		void reset_screen();  // reset the screen with a border and nothingness
+
 		virtual bool test_console() = 0; // check if the console is valid to run in
 
-		virtual void reset_screen() = 0; // reset the screen with a border and nothingness
+		virtual void clear_screen() = 0; // clear the screen completely
 		virtual void gotoxy(int x, int y) = 0; // set the console cursor position
 
 		virtual int read_char() = 0; // read's a single char from stdin without echoing
@@ -27,7 +29,7 @@ class Win32Console : public Console
 	public:
 		bool test_console();
 
-		void reset_screen();
+		void clear_screen();
 		void gotoxy(int x, int y);
 
 		int read_char();

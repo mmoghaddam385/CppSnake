@@ -19,7 +19,7 @@ int main()
 	SnakeGame game = SnakeGame(console);
 	game.start();
 		
-	system("pause");
+	console->clear_screen();
     return 0;
 }
 

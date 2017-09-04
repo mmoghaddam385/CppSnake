@@ -14,6 +14,7 @@ bool Win32Console::test_console()
 	if (screen_size.X < MIN_CONSOLE_WIDTH || screen_size.Y < MIN_CONSOLE_HEIGHT)
 	{
 		std::cout << "Console too small; must be at least " << MIN_CONSOLE_WIDTH << "x" << MIN_CONSOLE_HEIGHT << std::endl;
+		std::cout << "Your console is " << screen_size.X << "x" << screen_size.Y << std::endl;
 		return false;
 	}
 
@@ -27,20 +28,9 @@ void Win32Console::gotoxy(int x, int y)
 	SetConsoleCursorPosition(handle, pos);
 }
 
-void Win32Console::reset_screen()
+void Win32Console::clear_screen()
 {
 	system("cls");
-	this->gotoxy(0, 0);
-
-	std::cout << TOP_ROW << std::endl;
-
-	for (int y = 1; y < MIN_CONSOLE_HEIGHT - 1; y++)
-	{
-		std::cout << MID_ROW << std::endl;
-	}
-
-	std::cout << TOP_ROW << std::endl;
-
 }
 
 int Win32Console::read_char()

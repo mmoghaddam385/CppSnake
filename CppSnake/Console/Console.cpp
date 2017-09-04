@@ -14,5 +14,19 @@ std::shared_ptr<Console> Console::get_instance()
 	std::cout << "Platform not supported :(" << std::endl;
 	return NULL;
 #endif
+}
 
+void Console::reset_screen()
+{
+	this->clear_screen();
+	this->gotoxy(0, 0);
+
+	std::cout << TOP_ROW << std::endl;
+
+	for (int y = 1; y < MIN_CONSOLE_HEIGHT - 1; y++)
+	{
+		std::cout << MID_ROW << std::endl;
+	}
+
+	std::cout << TOP_ROW << std::endl;
 }
