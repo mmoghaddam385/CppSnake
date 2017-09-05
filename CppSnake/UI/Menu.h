@@ -5,6 +5,7 @@
 #include <string>
 #include <memory>
 #include <vector>
+#include <functional>
 
 #define ENTER_KEY 13
 
@@ -13,7 +14,9 @@
 #define UP_ARROW_KEY 72
 #define DOWN_ARROW_KEY 80
 
-typedef bool (*MenuCallback)();
+
+
+typedef std::function<bool ()> MenuCallback;
 
 class MenuItem
 {
@@ -43,6 +46,25 @@ class MenuButton : public MenuItem
 	private:
 		std::string m_txt;
 		MenuCallback m_callback;
+};
+
+class MenuSpinner : public MenuItem
+{
+	public:
+		MenuSpinner(int x, int y, std::string txt, std::vector<std::string>& options):
+			MenuItem(x, y), m_txt(txt), m_options(options), m_selected_index(0) { }
+
+		std::string get_selected(); // get the currently selected option
+
+		void draw(std::shared_ptr<Console> console);
+		void activate(std::shared_ptr<Console> console);
+		void deactivate(std::shared_ptr<Console> console);
+		bool handle_input(std::shared_ptr<Console> console, int input_char);
+
+	private:
+		std::string m_txt;
+		std::vector<std::string>& m_options;
+		int m_selected_index;
 };
 
 class Menu

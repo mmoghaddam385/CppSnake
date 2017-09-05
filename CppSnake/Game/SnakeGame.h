@@ -15,4 +15,5 @@ class SnakeGame
 		std::shared_ptr<Console> m_console;
 
 		void menu();
+		void options();
 };

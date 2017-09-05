@@ -28,11 +28,26 @@ void SnakeGame::menu()
 	// set up menu
 	std::vector<std::unique_ptr<MenuItem>> menu_items;
 
-	menu_items.push_back(std::make_unique<MenuButton>(MenuButton(5, 10, "Start game", callback)));
-	menu_items.push_back(std::make_unique<MenuButton>(MenuButton(5, 12, "Options", callback)));
-	menu_items.push_back(std::make_unique<MenuButton>(MenuButton(5, 14, "Quit", [] {return true; })));
+	menu_items.push_back(std::make_unique<MenuButton>(MenuButton(3, 10, "Start game", callback)));
+	menu_items.push_back(std::make_unique<MenuButton>(MenuButton(3, 12, "Options", [&] { this->options(); return true; } )));
+	menu_items.push_back(std::make_unique<MenuButton>(MenuButton(3, 14, "Quit", [] {return true; })));
 
 	auto menu = Menu(m_console, menu_items);
 	menu.capture_input();
 	
+}
+
+void SnakeGame::options()
+{
+	m_console->reset_screen();
+
+	std::vector<std::string> head_options {"A", "B", "C", "D"};
+
+	// set up options menu
+	std::vector<std::unique_ptr<MenuItem>> menu_items;
+
+	menu_items.push_back(std::make_unique<MenuSpinner>(MenuSpinner(3, 3, "Head Character", head_options)));
+	menu_items.push_back(std::make_unique<MenuButton>(MenuButton(3, 14, "Quit", [] {return true; })));
+
+	Menu(m_console, menu_items).capture_input();
 }
