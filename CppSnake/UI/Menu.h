@@ -6,6 +6,7 @@
 #include <memory>
 #include <vector>
 #include <functional>
+#include <future>
 
 #define ENTER_KEY 13
 
@@ -65,6 +66,32 @@ class MenuSpinner : public MenuItem
 		std::string m_txt;
 		std::vector<std::string>& m_options;
 		int m_selected_index;
+};
+
+class MultiItemMenuSpinner : public MenuItem
+{
+	public:
+		MultiItemMenuSpinner(int x, int y, std::string txt, std::vector<std::vector<char>>& options, std::vector<char>** selected):
+			MenuItem(x, y), m_txt(txt), m_options(options), m_selected(selected), m_selected_index(0), m_rotation_index(0) { }
+
+		MultiItemMenuSpinner(MultiItemMenuSpinner* copy):
+			MultiItemMenuSpinner(copy->m_x, copy->m_y, copy->m_txt, copy->m_options, copy->m_selected)  {  }
+
+		std::vector<char> get_selected(); // get the currently selected option
+
+		void draw(std::shared_ptr<Console> console);
+		void activate(std::shared_ptr<Console> console);
+		void deactivate(std::shared_ptr<Console> console);
+		bool handle_input(std::shared_ptr<Console> console, int input_char);
+
+	private:
+		std::string m_txt;
+		std::vector<std::vector<char>>& m_options;
+		std::vector<char>** m_selected;
+		int m_selected_index;
+		int m_rotation_index;
+
+		std::weak_ptr<std::thread> m_update_thread;
 };
 
 class Menu

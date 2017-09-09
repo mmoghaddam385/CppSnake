@@ -8,6 +8,7 @@
 
 int main()
 {
+
 	auto console = Console::get_instance();
 	if (!console || !console->test_console())
 	{

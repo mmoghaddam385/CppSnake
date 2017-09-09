@@ -2,7 +2,6 @@
 
 #include "../Console/console.h"
 
-#include <memory>
 
 class SnakeGame
 {
@@ -16,4 +15,16 @@ class SnakeGame
 
 		void menu();
 		void options();
+
+		char m_head_up_char = '^';
+		char m_head_down_char = 'v';
+		char m_head_left_char = '<';
+		char m_head_right_char = '>';
+
+		char m_body_vert_char = '\xB0';
+		char m_body_hor_char = '\xB0';
+		char m_body_top_left_char = '\xB0';
+		char m_body_top_right_char = '\xB0';
+		char m_body_bot_left_char = '\xB0';
+		char m_body_bot_right_char = '\xB0';
 };
