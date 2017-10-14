@@ -1,18 +1,20 @@
 #include "SnakeGame.h"
+#include "SnakeEngine.h"
 #include "../UI/Menu.h"
+#include "../Util/Vec2f.h"
 
 #include <iostream>
 #include <vector>
 
-bool callback()
-{
-	std::cout << "Button Pressed";
-	return false;
-}
-
 void SnakeGame::start()
 {
 	menu();
+}
+
+void SnakeGame::play()
+{
+	auto engine = SnakeEngine(this->m_console);
+	engine.start(Vec2f(0, 0));
 }
 
 void SnakeGame::menu()
@@ -30,9 +32,9 @@ void SnakeGame::menu()
 	// set up menu
 	std::vector<std::unique_ptr<MenuItem>> menu_items;
 
-	menu_items.push_back(std::make_unique<MenuButton>(MenuButton(3, 10, "Start game", callback)));
+	menu_items.push_back(std::make_unique<MenuButton>(MenuButton(3, 10, "Start game", [&] { this->play(); return true; } )));
 	menu_items.push_back(std::make_unique<MenuButton>(MenuButton(3, 12, "Options", [&] { this->options(); return true; } )));
-	menu_items.push_back(std::make_unique<MenuButton>(MenuButton(3, 14, "Quit", [] {return true; })));
+	menu_items.push_back(std::make_unique<MenuButton>(MenuButton(3, 14, "Quit", [] { return true; })));
 
 	auto menu = Menu(m_console, menu_items);
 	menu.capture_input();

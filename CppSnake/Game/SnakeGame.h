@@ -15,6 +15,7 @@ class SnakeGame
 
 		void menu();
 		void options();
+		void play();
 
 		char m_head_up_char = '^';
 		char m_head_down_char = 'v';

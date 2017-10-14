@@ -3,7 +3,7 @@ CARGS=-std=c++14
 EXE=Release/snake.exe
 MAIN=CppSnake.cpp
 CONSOLE=Console/Console.cpp Console/Win32Console.cpp
-GAME=Game/SnakeGame.cpp
+GAME=Game/SnakeGame.cpp Game/SnakeEngine.cpp
 MENU=UI/Menu.cpp UI/MenuButton.cpp UI/MenuSpinner.cpp UI/MultiItemMenuSpinner.cpp
 
 build:
