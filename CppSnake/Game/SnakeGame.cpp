@@ -1,7 +1,6 @@
 #include "SnakeGame.h"
 #include "SnakeEngine.h"
 #include "../UI/Menu.h"
-#include "../Util/Vec2f.h"
 
 #include <iostream>
 #include <vector>
@@ -14,7 +13,7 @@ void SnakeGame::start()
 void SnakeGame::play()
 {
 	auto engine = SnakeEngine(this->m_console);
-	engine.start(Vec2f(0, 0));
+	engine.start(EASY_SETTINGS);
 }
 
 void SnakeGame::menu()
